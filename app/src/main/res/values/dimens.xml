@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="log_in_sign_up_button_height">72dp</dimen>
+    <dimen name="log_in_sign_up_button_width">180dp</dimen>
+    <dimen name="log_in_sign_up_top_margin">480dp</dimen>
+
+</resources>

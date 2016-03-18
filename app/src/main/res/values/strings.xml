@@ -1,0 +1,27 @@
+<resources>
+    <string name="app_name">EasyLearning</string>
+    <string name="sign_up">Sign Up</string>
+    <string name="log_in">Log In</string>
+    <string name="action_log_in">Log In</string>
+    <string name="action_sign_up">Sign Up</string>
+
+    <string name="pref_account_title">Account </string>
+
+    <string name="pref_email_title">Enter email </string>
+    <string name="pref_email_dialog_title">Email </string>
+    <string name="pref_email_default"></string>
+
+    <string name="pref_dob_default"></string>
+
+    <string name="pref_username_default"></string>
+    <string name="pref_password_default"></string>
+
+    <string name="pref_gender_title">Gender </string>
+    <string name="pref_gender_dialog_title">Gender </string>
+    <string name="pref_gender_default">Male</string>
+
+    <string-array name="pref_genderTypes">
+        <item>Male</item>
+        <item>Female</item>
+    </string-array>
+</resources>
