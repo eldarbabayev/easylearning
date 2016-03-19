@@ -11,6 +11,14 @@
         android:label="@string/app_name"
         android:theme="@style/AppTheme" >
         <activity
+            android:name=".views.main.Main"
+            android:label="@string/app_name" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"></action>
+                <category android:name="android.intent.category.LAUNCHER"></category>
+            </intent-filter>
+        </activity>
+        <activity
             android:name=".views.search_classes.SearchClassesActivity"
             android:label="@string/app_name" >
         </activity>
