@@ -1,4 +1,4 @@
-package com.play.eldarbabayev2.easylearning.views;
+package com.play.eldarbabayev2.easylearning.views.classes;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -10,7 +10,7 @@ import android.widget.LinearLayout;
 
 import com.astuetz.PagerSlidingTabStrip;
 import com.play.eldarbabayev2.easylearning.R;
-import com.play.eldarbabayev2.easylearning.views.ui.CustomPagerAdapter;
+import com.play.eldarbabayev2.easylearning.views.classes.adapters.CustomPagerAdapter;
 
 import java.lang.reflect.Field;
 import java.util.ArrayList;

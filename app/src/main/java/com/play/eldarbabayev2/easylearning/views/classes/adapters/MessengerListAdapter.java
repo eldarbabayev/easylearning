@@ -1,4 +1,4 @@
-package com.play.eldarbabayev2.easylearning.views.ui;
+package com.play.eldarbabayev2.easylearning.views.classes.adapters;
 
 import android.app.Activity;
 import android.content.SharedPreferences;

@@ -1,4 +1,4 @@
-package com.play.eldarbabayev2.easylearning.views;
+package com.play.eldarbabayev2.easylearning.views.classes;
 
 import android.app.Activity;
 import android.graphics.Typeface;

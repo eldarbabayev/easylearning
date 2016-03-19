@@ -3,20 +3,20 @@ package com.play.eldarbabayev2.easylearning.controllers;
 import com.play.eldarbabayev2.easylearning.common.GenericAsyncTask;
 import com.play.eldarbabayev2.easylearning.common.GenericAsyncTaskOps;
 import com.play.eldarbabayev2.easylearning.common.PresenterOps;
-import com.play.eldarbabayev2.easylearning.views.LogInSignUp;
-import com.play.eldarbabayev2.easylearning.views.SignUp;
+import com.play.eldarbabayev2.easylearning.views.main.Main;
 
 import java.lang.ref.WeakReference;
 import java.util.ArrayList;
 import java.util.Iterator;
 
 public class LogInSignUpController implements GenericAsyncTaskOps<ArrayList<Iterator>, Void, Integer>,
-        PresenterOps<LogInSignUp> {
+        PresenterOps<Main> {
+
 
     private final static String TAG =
             LogInSignUpController.class.getCanonicalName();
 
-    private WeakReference<LogInSignUp> mView;
+    private WeakReference<Main> mView;
 
     private GenericAsyncTask<ArrayList<Iterator>,
             Void,
@@ -28,12 +28,12 @@ public class LogInSignUpController implements GenericAsyncTaskOps<ArrayList<Iter
     }
 
     @Override
-    public void onCreate(LogInSignUp view) {
+    public void onCreate(Main view) {
         mView = new WeakReference<>(view);
     }
 
     @Override
-    public void onConfigurationChange(LogInSignUp view) {
+    public void onConfigurationChange(Main view) {
         mView = new WeakReference<>(view);
     }
 

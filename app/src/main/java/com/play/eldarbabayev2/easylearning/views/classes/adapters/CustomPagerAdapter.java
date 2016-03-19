@@ -1,16 +1,14 @@
-package com.play.eldarbabayev2.easylearning.views.ui;
+package com.play.eldarbabayev2.easylearning.views.classes.adapters;
 
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
-import android.support.v4.view.PagerAdapter;
-import android.view.View;
 
 import com.astuetz.PagerSlidingTabStrip;
 import com.play.eldarbabayev2.easylearning.R;
-import com.play.eldarbabayev2.easylearning.views.AccountPageFragment;
-import com.play.eldarbabayev2.easylearning.views.GroupChatFragment;
-import com.play.eldarbabayev2.easylearning.views.TeacherChatFragment;
+import com.play.eldarbabayev2.easylearning.views.classes.AccountPageFragment;
+import com.play.eldarbabayev2.easylearning.views.classes.GroupChatFragment;
+import com.play.eldarbabayev2.easylearning.views.classes.TeacherChatFragment;
 
 public class CustomPagerAdapter extends
         FragmentPagerAdapter implements PagerSlidingTabStrip.IconTabProvider {

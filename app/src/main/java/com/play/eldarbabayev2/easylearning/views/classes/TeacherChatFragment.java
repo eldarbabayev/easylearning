@@ -1,22 +1,18 @@
-package com.play.eldarbabayev2.easylearning.views;
+package com.play.eldarbabayev2.easylearning.views.classes;
 
 import android.app.Activity;
-import android.graphics.Typeface;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
-import android.text.Html;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
 import android.widget.ListView;
-import android.widget.TextView;
 
 import com.firebase.client.Firebase;
 import com.play.eldarbabayev2.easylearning.R;
 import com.play.eldarbabayev2.easylearning.models.Chat;
 import com.play.eldarbabayev2.easylearning.utils.Constants;
-import com.play.eldarbabayev2.easylearning.views.ui.MessengerListAdapter;
+import com.play.eldarbabayev2.easylearning.views.classes.adapters.MessengerListAdapter;
 
 public class TeacherChatFragment extends Fragment implements View.OnClickListener {
 

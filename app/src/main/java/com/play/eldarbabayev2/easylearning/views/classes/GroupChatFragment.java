@@ -1,4 +1,4 @@
-package com.play.eldarbabayev2.easylearning.views;
+package com.play.eldarbabayev2.easylearning.views.classes;
 
 import android.app.Activity;
 import android.content.SharedPreferences;
@@ -9,7 +9,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.animation.Animation;
-import android.view.animation.AnimationUtils;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ListView;
@@ -18,7 +17,7 @@ import com.firebase.client.Firebase;
 import com.play.eldarbabayev2.easylearning.R;
 import com.play.eldarbabayev2.easylearning.models.Chat;
 import com.play.eldarbabayev2.easylearning.utils.Constants;
-import com.play.eldarbabayev2.easylearning.views.ui.MessengerListAdapter;
+import com.play.eldarbabayev2.easylearning.views.classes.adapters.MessengerListAdapter;
 
 public class GroupChatFragment extends Fragment implements View.OnClickListener {
 
@@ -74,11 +73,11 @@ public class GroupChatFragment extends Fragment implements View.OnClickListener 
 
         ImageButton button = (ImageButton) view.findViewById(R.id.send_message_button);
 
-        bottomUp = AnimationUtils.loadAnimation(getContext(),
-                R.anim.bottom_up);
+        //bottomUp = AnimationUtils.loadAnimation(getContext(),
+      //          R.anim.bottom_up);
 
-        bottomDown = AnimationUtils.loadAnimation(getContext(),
-                R.anim.bottom_down);
+  //      bottomDown = AnimationUtils.loadAnimation(getContext(),
+    //            R.anim.bottom_down);
 
         hiddenPanel = (ViewGroup) view.findViewById(R.id.editable);
 

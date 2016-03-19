@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Point;
+import android.graphics.Typeface;
 import android.net.Uri;
 import android.os.Build;
 import android.os.IBinder;
@@ -12,6 +13,9 @@ import android.view.Display;
 import android.view.View;
 import android.view.WindowManager;
 import android.view.inputmethod.InputMethodManager;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.ArrayList;
@@ -142,4 +146,47 @@ public class Utils {
             return email;
         }
     }
+
+    public static void setTypefaceMedium(Button b1, Button b2, Activity activity) {
+        Typeface avenirMedium = Typeface.createFromAsset(activity.getAssets(), "fonts/AvenirLTStd-Medium.ttf");
+        b1.setTypeface(avenirMedium);
+        b2.setTypeface(avenirMedium);
+    }
+
+    public static void setTypefaceMedium(Button b, Activity activity) {
+        Typeface avenirMedium = Typeface.createFromAsset(activity.getAssets(), "fonts/AvenirLTStd-Medium.ttf");
+        b.setTypeface(avenirMedium);
+    }
+
+    public static void setTypefaceMedium(TextView t, Activity activity) {
+        Typeface avenirMedium = Typeface.createFromAsset(activity.getAssets(), "fonts/AvenirLTStd-Medium.ttf");
+        t.setTypeface(avenirMedium);
+    }
+
+
+    public static void setTypefaceLight(EditText e1, EditText e2, TextView t, Activity activity) {
+        Typeface avenirLight = Typeface.createFromAsset(activity.getAssets(), "fonts/AvenirLTStd-Light.ttf");
+        e1.setTypeface(avenirLight);
+        e2.setTypeface(avenirLight);
+        t.setTypeface(avenirLight);
+    }
+
+    public static void setTypefaceLight(EditText e1, EditText e2, EditText e3, EditText e4, EditText e5, EditText e6, TextView t, Activity activity) {
+        Typeface avenirLight = Typeface.createFromAsset(activity.getAssets(), "fonts/AvenirLTStd-Light.ttf");
+        e1.setTypeface(avenirLight);
+        e2.setTypeface(avenirLight);
+        e3.setTypeface(avenirLight);
+        e4.setTypeface(avenirLight);
+        e5.setTypeface(avenirLight);
+        e6.setTypeface(avenirLight);
+        t.setTypeface(avenirLight);
+    }
+
+    public static void setTypefaceLight(TextView t, Activity activity) {
+        Typeface avenirLight = Typeface.createFromAsset(activity.getAssets(), "fonts/AvenirLTStd-Light.ttf");
+        t.setTypeface(avenirLight);
+    }
+
+
+
 }

@@ -3,7 +3,7 @@ package com.play.eldarbabayev2.easylearning.controllers;
 import com.play.eldarbabayev2.easylearning.common.GenericAsyncTask;
 import com.play.eldarbabayev2.easylearning.common.GenericAsyncTaskOps;
 import com.play.eldarbabayev2.easylearning.common.PresenterOps;
-import com.play.eldarbabayev2.easylearning.views.LogIn;
+import com.play.eldarbabayev2.easylearning.views.authentication.LogIn;
 
 import java.lang.ref.WeakReference;
 import java.util.ArrayList;
