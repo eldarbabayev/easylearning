@@ -9,7 +9,8 @@
         app:pstsShouldExpand="true"
         app:pstsTextAllCaps="true"
         android:layout_width="match_parent"
-        android:layout_height="60dp"
+        android:layout_height="40dp"
+        android:layout_marginBottom="10dp"
         app:pstsIndicatorColor="@color/pink"
         app:pstsIndicatorHeight="3dp"
         />

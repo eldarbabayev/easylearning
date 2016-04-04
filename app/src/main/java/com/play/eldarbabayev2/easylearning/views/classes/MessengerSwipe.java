@@ -90,9 +90,6 @@ public class MessengerSwipe extends AppCompatActivity {
 
     private void setupViewPager(ViewPager viewPager) {
         ViewPagerAdapter adapter = new ViewPagerAdapter(getSupportFragmentManager());
-        //adapter.addFragment(new TeacherChatFragment(), "");
-        //adapter.addFragment(new GroupChatFragment(), "");
-        //adapter.addFragment(new AccountPageFragment(), "");
         viewPager.setAdapter(adapter);
     }
 
@@ -124,4 +121,9 @@ public class MessengerSwipe extends AppCompatActivity {
             return mFragmentTitleList.get(position);
         }
     }
+
+    @Override
+    public void onBackPressed() {
+    }
+
 }

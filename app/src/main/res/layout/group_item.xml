@@ -10,7 +10,7 @@
     android:layout_width="match_parent"
     android:layout_height="200dp"
     android:layout_gravity="center"
-    card_view:cardBackgroundColor="#424242"
+    card_view:cardBackgroundColor="@color/white"
     android:layout_marginTop = "5dp"
     android:layout_marginBottom = "5dp"
     android:layout_marginLeft = "6dp"
@@ -33,13 +33,15 @@
             android:textSize="23sp"
             android:gravity="center_vertical"
             android:paddingLeft="20dp"
+            android:paddingRight="20dp"
+
 
             />
 
         <TextView
             android:layout_width="200dp"
             android:layout_height="1dp"
-            android:background="#616161"
+            android:background="@color/text_separator"
             android:layout_marginLeft="20dp"
 
             />
@@ -48,30 +50,37 @@
             android:id="@+id/group_description_item"
             android:layout_width="match_parent"
             android:layout_height="60dp"
-            android:textColor="#FFFFFF"
+            android:textColor="@color/black"
             android:textSize="17sp"
             android:gravity="center_vertical"
             android:paddingLeft="20dp"
+            android:paddingRight="20dp"
+
             />
 
         <TextView
             android:layout_width="200dp"
             android:layout_height="1dp"
-            android:background="#616161"
+            android:background="@color/text_separator"
             android:layout_marginLeft="20dp"
 
             />
+
 
         <TextView
             android:id="@+id/group_teacher_item"
             android:layout_width="match_parent"
             android:layout_height="60dp"
-            android:textColor="#FFFFFF"
+            android:textColor="@color/black"
             android:textSize="17sp"
             android:gravity="center_vertical"
             android:paddingLeft="20dp"
+            android:paddingRight="20dp"
 
             />
+
+
+
 
 
     </LinearLayout>

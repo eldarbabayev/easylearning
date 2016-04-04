@@ -187,6 +187,13 @@ public class Utils {
         t.setTypeface(avenirLight);
     }
 
+    public static void setTypefaceLight(EditText e, Activity activity) {
+        Typeface avenirLight = Typeface.createFromAsset(activity.getAssets(), "fonts/AvenirLTStd-Light.ttf");
+        e.setTypeface(avenirLight);
+    }
+
+
+
 
 
 }

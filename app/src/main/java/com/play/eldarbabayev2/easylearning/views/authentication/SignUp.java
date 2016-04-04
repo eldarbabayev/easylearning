@@ -15,6 +15,7 @@ import android.text.TextPaint;
 import android.text.method.LinkMovementMethod;
 import android.text.style.ClickableSpan;
 import android.util.Log;
+import android.view.KeyEvent;
 import android.view.View;
 import android.widget.Button;
 import android.widget.DatePicker;
@@ -31,6 +32,9 @@ import com.play.eldarbabayev2.easylearning.controllers.SignUpController;
 import com.play.eldarbabayev2.easylearning.utils.Constants;
 import com.play.eldarbabayev2.easylearning.views.search_classes.SearchClassesActivity;
 
+import org.json.JSONArray;
+
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.regex.Matcher;
@@ -63,7 +67,7 @@ public class SignUp extends GenericActivity<SignUp,
         super.onCreate(savedInstanceState);
         setContentView(R.layout.sign_up);
 
-        Button signUpButton = (Button) findViewById(R.id.sign_up_button_inner);
+        final Button signUpButton = (Button) findViewById(R.id.sign_up_button_inner);
         emailInput = (EditText) findViewById(R.id.email_sign_up);
         fullNameInput = (EditText) findViewById(R.id.fullname_sign_up);
         passwordInput = (EditText) findViewById(R.id.password_sign_up);
@@ -83,6 +87,22 @@ public class SignUp extends GenericActivity<SignUp,
         setUpTermsConditions(termsInput);
 
         ref = new Firebase(Constants.FIREBASE_URL);
+
+
+        countryInput.setOnKeyListener(new View.OnKeyListener() {
+            public boolean onKey(View view, int keyCode, KeyEvent keyevent) {
+                //If the keyevent is a key-dow
+                // n event on the "enter" button
+                if ((keyevent.getAction() == KeyEvent.ACTION_DOWN) && (keyCode == KeyEvent.KEYCODE_ENTER)) {
+                    signUpButton.performClick();
+                    // Perform your action on key press here
+                    // ...
+                    return true;
+                }
+                return false;
+            }
+        });
+
 
         super.onCreate(SignUpController.class,
                 this);
@@ -276,9 +296,9 @@ public class SignUp extends GenericActivity<SignUp,
             Log.d(TAG, "gender is empty");
         } else if (!validateEmail(emailInput.getText().toString())) {
             Log.d(TAG, "email is invalid");
-        } else if (!validateUsername(fullNameInput.getText().toString())) {
+        } else if (/**!validateUsername(fullNameInput.getText().toString()) ||**/ false) {
             Log.d(TAG, "username is invalid");
-        } else if (!validatePassword(passwordInput.getText().toString())) {
+        } else if (/**!validatePassword(passwordInput.getText().toString()) ||**/ false) {
             Log.d(TAG, "password is invallid");
         } else {
             ref.createUser(emailInput.getText().toString(),
@@ -286,15 +306,14 @@ public class SignUp extends GenericActivity<SignUp,
                             new Firebase.ValueResultHandler<Map<String, Object>>() {
                                 @Override
                                 public void onSuccess(Map<String, Object> result) {
-                                    Firebase postRef = ref.child("userList");
+                                    Firebase postRef = ref.child("users");
                                     Map<String, Object> post = new HashMap<>();
 
-                                    post.put("userFullname", fullNameInput.getText().toString());
-                                    post.put("userDateOfBirth", dateOfBirthInput.getText().toString());
-                                    post.put("userGender", genderInput.getText().toString());
-                                    post.put("userEmail", emailInput.getText().toString());
-                                    post.put("userCountry", countryInput.getText().toString());
-
+                                    post.put("name", fullNameInput.getText().toString());
+                                    post.put("birthday", dateOfBirthInput.getText().toString());
+                                    post.put("gender", genderInput.getText().toString());
+                                    post.put("email", emailInput.getText().toString());
+                                    post.put("country", countryInput.getText().toString());
 
                                     postRef.child(Utils.escapeEmailAddress(emailInput.getText().toString())).setValue(post);
 

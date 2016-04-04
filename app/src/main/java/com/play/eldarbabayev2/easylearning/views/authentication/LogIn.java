@@ -9,6 +9,7 @@ import android.text.Spanned;
 import android.text.TextPaint;
 import android.text.method.LinkMovementMethod;
 import android.text.style.ClickableSpan;
+import android.view.KeyEvent;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -46,7 +47,7 @@ public class LogIn extends GenericActivity<LogIn,
         emailInput = (EditText) findViewById(R.id.email_log_in);
         passInput = (EditText) findViewById(R.id.password_log_in);
         TextView forgotPass = (TextView) findViewById(R.id.forgot_password);
-        Button logInButton = (Button) findViewById(R.id.log_in_button_inner);
+        final Button logInButton = (Button) findViewById(R.id.log_in_button_inner);
 
         // Set avenir typeface
         Utils.setTypefaceMedium(logInButton, this);
@@ -57,6 +58,20 @@ public class LogIn extends GenericActivity<LogIn,
         setUpPassForgot(forgotPass);
 
         ref = new Firebase(Constants.FIREBASE_URL);
+
+        passInput.setOnKeyListener(new View.OnKeyListener() {
+            public boolean onKey(View view, int keyCode, KeyEvent keyevent) {
+                //If the keyevent is a key-down event on the "enter" button
+                if ((keyevent.getAction() == KeyEvent.ACTION_DOWN) && (keyCode == KeyEvent.KEYCODE_ENTER)) {
+                    logInButton.performClick();
+                    // Perform your action on key press here
+                    // ...
+                    return true;
+                }
+                return false;
+            }
+        });
+
 
         super.onCreate(LogInController.class,
                 this);
@@ -124,7 +139,7 @@ public class LogIn extends GenericActivity<LogIn,
                 new Firebase.AuthResultHandler() {
                     @Override
                     public void onAuthenticated(AuthData authData) {
-                        Firebase childref = ref.child("userList").child(Utils.escapeEmailAddress(emailInput.getText().toString()));
+                        Firebase childref = ref.child("users").child(Utils.escapeEmailAddress(emailInput.getText().toString()));
 
                         // Attach an listener to read the data at our posts reference
                         childref.addListenerForSingleValueEvent(new ValueEventListener() {
@@ -132,22 +147,20 @@ public class LogIn extends GenericActivity<LogIn,
                             public void onDataChange(DataSnapshot snapshot) {
 
                                 // get data from snapshot
-                                String userFullname = snapshot.child("userFullname").getValue().toString();
-                                String userDateOfBirth = snapshot.child("userDateOfBirth").getValue().toString();
-                                String userGender = snapshot.child("userGender").getValue().toString();
-                                String userEmail = snapshot.child("userEmail").getValue().toString();
-                                String userCountry = snapshot.child("userCountry").getValue().toString();
+                                String userFullname = snapshot.child("name").getValue().toString();
+                                String userDateOfBirth = snapshot.child("birthday").getValue().toString();
+                                String userGender = snapshot.child("gender").getValue().toString();
+                                String userEmail = snapshot.child("email").getValue().toString();
+                                String userCountry = snapshot.child("country").getValue().toString();
 
-                                // create new user
-                                User user = new User(userFullname, userDateOfBirth, userGender, userEmail, userCountry);
 
                                 // put data into shared preferences
                                 SharedPreferences prefs = getApplication().getSharedPreferences("UserPrefs", 0);
-                                prefs.edit().putString("userFullname", user.getUserFullname()).apply();
-                                prefs.edit().putString("userDateOfBirth", user.getUserDateOfBirth()).apply();
-                                prefs.edit().putString("userGender", user.getUserGender()).apply();
-                                prefs.edit().putString("userEmail", user.getUserEmail()).apply();
-                                prefs.edit().putString("userCountry", user.getUserCountry()).apply();
+                                prefs.edit().putString("userFullname", userFullname).apply();
+                                prefs.edit().putString("userDateOfBirth", userDateOfBirth).apply();
+                                prefs.edit().putString("userGender", userGender).apply();
+                                prefs.edit().putString("userEmail", userEmail).apply();
+                                prefs.edit().putString("userCountry", userCountry).apply();
 
                             }
 
@@ -167,5 +180,6 @@ public class LogIn extends GenericActivity<LogIn,
                     }
                 });
     }
-}
+
+ }
 

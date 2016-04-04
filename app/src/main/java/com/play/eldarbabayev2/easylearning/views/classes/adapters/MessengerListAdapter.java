@@ -14,45 +14,40 @@ import android.widget.LinearLayout.LayoutParams;
 import com.firebase.client.Query;
 import com.firebase.ui.FirebaseListAdapter;
 import com.play.eldarbabayev2.easylearning.R;
+import com.play.eldarbabayev2.easylearning.common.PresenterOps;
+import com.play.eldarbabayev2.easylearning.common.Utils;
 import com.play.eldarbabayev2.easylearning.models.Chat;
 
 public class MessengerListAdapter extends FirebaseListAdapter<Chat> {
 
-    private String mUsername;
-
     public MessengerListAdapter(Activity activity, Class<Chat> modelClass, int modelLayout,
                            Query ref) {
         super(activity, modelClass, modelLayout, ref);
-        this.mUsername = mUsername;
     }
 
 
     @Override
     protected void populateView(View view, Chat chat) {
-
-        String author = chat.getAuthor();
         SharedPreferences prefs = mActivity.getSharedPreferences("UserPrefs", 0);
 
-        TextView tv = (TextView) view.findViewById(R.id.messageitem);
+        TextView userNameTextBox = (TextView) view.findViewById(R.id.user_name);
+
+        TextView contentTextBox = (TextView) view.findViewById(R.id.user_message_content);
+
+        String author = chat.getAuthor();
         String username = prefs.getString("userFullname", null);
-        Log.d("USERNAME ", author + username);
-        LayoutParams lp = (LayoutParams) tv.getLayoutParams();
         Typeface typeFace = Typeface.createFromAsset(mActivity.getAssets(), "fonts/AvenirLTStd-Light.ttf");
-        tv.setText(chat.getMessage());
-        tv.setTypeface(typeFace);
+        userNameTextBox.setText(author);
+        contentTextBox.setText(chat.getMessage());
+        userNameTextBox.setTypeface(typeFace);
+        contentTextBox.setTypeface(typeFace);
 
         if (username.equals(author)) {
-            lp.gravity = Gravity.RIGHT;
-
-            tv.setBackgroundDrawable(ContextCompat.getDrawable(mActivity,R.drawable.chat_bubble_me_middle));
-
+            userNameTextBox.setTextColor(view.getResources().getColor(R.color.blue));
         } else {
-            lp.gravity = Gravity.LEFT;
-            tv.setBackgroundDrawable(ContextCompat.getDrawable(mActivity,R.drawable.chat_bubble_friend_middle));
+            userNameTextBox.setTextColor(view.getResources().getColor(R.color.pink));
 
         }
-
-        tv.setLayoutParams(lp);
     }
 
 }

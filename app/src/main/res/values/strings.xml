@@ -4,6 +4,7 @@
     <string name="log_in">Log In</string>
     <string name="action_log_in">Log In</string>
     <string name="action_sign_up">Sign Up</string>
+    <string name="leave_group">Leave class </string>
 
     <string name="pref_account_title">Account </string>
 
@@ -20,8 +21,32 @@
     <string name="pref_gender_dialog_title">Gender </string>
     <string name="pref_gender_default">Male</string>
 
+    <!-- Drawer Toggle -->
+    <string name="drawer_open">Open navigation drawer</string>
+    <string name="drawer_close">Close navigation drawer</string>
+    <string name="log_out">Log Out</string>
+
     <string-array name="pref_genderTypes">
         <item>Male</item>
         <item>Female</item>
     </string-array>
+
+    <!-- Fragment options -->
+    <string-array name="options_array">
+        <item>Find Courses</item>
+        <item>My Courses</item>
+        <item>Settings</item>
+    </string-array>
+
+    <string name="find_courses">Find Courses</string>
+    <string name="my_courses">My Courses</string>
+    <string name="settings">Settings</string>
+
+    <!-- Menu items -->
+    <string name="choose_options">choose options</string>
+
+
+    <!-- Group item helpers -->
+    <string name="instructor">Instructor</string>
+    <string name="organisation">Organization</string>
 </resources>

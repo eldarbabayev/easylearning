@@ -2,7 +2,6 @@
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/log_in_background"
     android:descendantFocusability="beforeDescendants"
     android:focusableInTouchMode="true">
 
@@ -14,7 +13,7 @@
 
     <TextView
         android:layout_width="match_parent"
-        android:layout_height="30dp"
+        android:layout_height="180dp"
         android:id="@+id/sign_up_upper"
         />
 

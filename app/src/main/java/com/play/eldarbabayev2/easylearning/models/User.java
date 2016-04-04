@@ -1,5 +1,7 @@
 package com.play.eldarbabayev2.easylearning.models;
 
+import java.util.ArrayList;
+
 public class User {
 
     private String userFullname;
@@ -8,15 +10,19 @@ public class User {
     private String userEmail;
     private String userCountry;
 
+    private ArrayList<String> myGroups;
+
+
     public User() {
     }
 
-    public User(String userFullname, String userDateOfBirth, String userGender, String userEmail, String userCountry) {
+    public User(String userFullname, String userDateOfBirth, String userGender, String userEmail, String userCountry, ArrayList<String> myGroups) {
         this.userFullname = userFullname;
         this.userDateOfBirth = userDateOfBirth;
         this.userGender = userGender;
         this.userEmail = userEmail;
         this.userCountry = userCountry;
+        this.myGroups = myGroups;
     }
 
     public String getUserFullname() {
@@ -58,4 +64,14 @@ public class User {
     public void setUserCountry(String userCountry) {
         this.userCountry = userCountry;
     }
+
+    public void setMyGroups(ArrayList<String> myGroups) {
+        this.myGroups = myGroups;
+    }
+
+    public ArrayList<String> getMyGroups() {
+
+        return myGroups;
+    }
+
 }

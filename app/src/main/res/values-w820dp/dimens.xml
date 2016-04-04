@@ -4,4 +4,11 @@
     <dimen name="log_in_sign_up_button_width">180dp</dimen>
     <dimen name="log_in_sign_up_top_margin">480dp</dimen>
 
+
+    <!-- Group Search Activity -->
+
+    <dimen name="group_side_margin">30dp</dimen>
+    <dimen name="toolbar_height">60dp</dimen>
+    <dimen name="left_drawer_width">300dp</dimen>
+
 </resources>

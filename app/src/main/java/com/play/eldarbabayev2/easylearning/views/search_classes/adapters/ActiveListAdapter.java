@@ -10,15 +10,21 @@ import com.firebase.ui.FirebaseListAdapter;
 import com.play.eldarbabayev2.easylearning.R;
 import com.play.eldarbabayev2.easylearning.models.Group;
 
+import org.w3c.dom.Text;
+
 public class ActiveListAdapter extends FirebaseListAdapter<Group> {
 
     private Typeface typeFace;
+    private Typeface typeFace_bold;
+
 
     public ActiveListAdapter(Activity activity, Class<Group> modelClass, int modelLayout,
                              Query ref) {
         super(activity, modelClass, modelLayout, ref);
+
         this.mActivity = activity;
         typeFace = Typeface.createFromAsset(activity.getAssets(), "fonts/AvenirLTStd-Light.ttf");
+        typeFace_bold = Typeface.createFromAsset(activity.getAssets(), "fonts/AvenirLTStd-Medium.ttf");
 
     }
 
@@ -34,9 +40,8 @@ public class ActiveListAdapter extends FirebaseListAdapter<Group> {
         descrtext.setText(group.getGroupDescription());
         teachertext.setText(group.getGroupTeacher());
 
-        nametext.setTypeface(typeFace);
+        nametext.setTypeface(typeFace_bold);
         descrtext.setTypeface(typeFace);
         teachertext.setTypeface(typeFace);
-
     }
 }
