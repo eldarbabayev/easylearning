@@ -35,12 +35,10 @@
     <string-array name="options_array">
         <item>Find Courses</item>
         <item>My Courses</item>
-        <item>Settings</item>
     </string-array>
 
     <string name="find_courses">Find Courses</string>
     <string name="my_courses">My Courses</string>
-    <string name="settings">Settings</string>
 
     <!-- Menu items -->
     <string name="choose_options">choose options</string>
@@ -49,4 +47,10 @@
     <!-- Group item helpers -->
     <string name="instructor">Instructor</string>
     <string name="organisation">Organization</string>
+
+
+    <string name="learn">LEARN</string>
+    <string name="chat">CHAT</string>
+    <string name="send">SEND</string>
+
 </resources>

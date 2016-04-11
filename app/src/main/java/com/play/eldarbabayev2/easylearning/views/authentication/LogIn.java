@@ -46,16 +46,17 @@ public class LogIn extends GenericActivity<LogIn,
         // UI
         emailInput = (EditText) findViewById(R.id.email_log_in);
         passInput = (EditText) findViewById(R.id.password_log_in);
-        TextView forgotPass = (TextView) findViewById(R.id.forgot_password);
+        //TextView forgotPass = (TextView) findViewById(R.id.forgot_password);
         final Button logInButton = (Button) findViewById(R.id.log_in_button_inner);
 
         // Set avenir typeface
         Utils.setTypefaceMedium(logInButton, this);
-        Utils.setTypefaceLight(emailInput, passInput, forgotPass, this);
+        Utils.setTypefaceLight(emailInput, this);
+        Utils.setTypefaceLight(passInput, this);
 
         setUpInputForm();
 
-        setUpPassForgot(forgotPass);
+        //setUpPassForgot(forgotPass);
 
         ref = new Firebase(Constants.FIREBASE_URL);
 

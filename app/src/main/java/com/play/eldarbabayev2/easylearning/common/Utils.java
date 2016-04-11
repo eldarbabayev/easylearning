@@ -8,9 +8,11 @@ import android.graphics.Typeface;
 import android.net.Uri;
 import android.os.Build;
 import android.os.IBinder;
+import android.support.design.widget.TabLayout;
 import android.util.DisplayMetrics;
 import android.view.Display;
 import android.view.View;
+import android.view.ViewGroup;
 import android.view.WindowManager;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
@@ -192,6 +194,23 @@ public class Utils {
         e.setTypeface(avenirLight);
     }
 
+    public static void changeTabsFont(TabLayout tabLayout, Activity activity) {
+
+        Typeface avenirMedium = Typeface.createFromAsset(activity.getAssets(), "fonts/AvenirLTStd-Medium.ttf");
+
+        ViewGroup vg = (ViewGroup) tabLayout.getChildAt(0);
+        int tabsCount = vg.getChildCount();
+        for (int j = 0; j < tabsCount; j++) {
+            ViewGroup vgTab = (ViewGroup) vg.getChildAt(j);
+            int tabChildsCount = vgTab.getChildCount();
+            for (int i = 0; i < tabChildsCount; i++) {
+                View tabViewChild = vgTab.getChildAt(i);
+                if (tabViewChild instanceof TextView) {
+                    ((TextView) tabViewChild).setTypeface(avenirMedium, Typeface.NORMAL);
+                }
+            }
+        }
+    }
 
 
 

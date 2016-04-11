@@ -13,8 +13,8 @@
     card_view:cardBackgroundColor="@color/white"
     android:layout_marginTop = "5dp"
     android:layout_marginBottom = "5dp"
-    android:layout_marginLeft = "6dp"
-    android:layout_marginRight = "6dp"
+    android:layout_marginLeft = "@dimen/group_side_margin"
+    android:layout_marginRight = "@dimen/group_side_margin"
 
     android:foreground="?android:attr/selectableItemBackground">
 
@@ -29,7 +29,7 @@
             android:id="@+id/group_name_item"
             android:layout_width="match_parent"
             android:layout_height="77dp"
-            android:textColor="#E91E63"
+            android:textColor="@color/primary"
             android:textSize="23sp"
             android:gravity="center_vertical"
             android:paddingLeft="20dp"

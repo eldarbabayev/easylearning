@@ -41,7 +41,7 @@
             android:layout_gravity="start"
             android:layout_weight="1"
             android:onClick="SignUpActivityCommand"
-            android:background="#E91E63"
+            android:background="@color/primary"
             android:textAllCaps="true"
             android:textColor="#FFFFFF"
             android:textAlignment="center"

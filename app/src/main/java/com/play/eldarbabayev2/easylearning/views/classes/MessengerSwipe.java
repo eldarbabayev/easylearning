@@ -1,95 +1,84 @@
+/**
+ * Acknowledgement: http://www.androidhive.info/2015/09/android-material-design-working-with-tabs/
+**/
+
 package com.play.eldarbabayev2.easylearning.views.classes;
 
+import android.support.design.widget.TabLayout;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
-import android.widget.LinearLayout;
+import android.support.v7.widget.Toolbar;
+import android.util.Log;
+import android.view.MenuItem;
+import android.widget.Button;
+import android.widget.TextView;
 
-import com.astuetz.PagerSlidingTabStrip;
 import com.play.eldarbabayev2.easylearning.R;
-import com.play.eldarbabayev2.easylearning.views.classes.adapters.CustomPagerAdapter;
+import com.play.eldarbabayev2.easylearning.common.Utils;
 
-import java.lang.reflect.Field;
 import java.util.ArrayList;
 import java.util.List;
 
 public class MessengerSwipe extends AppCompatActivity {
 
+    private Toolbar toolbar;
+    private TabLayout tabLayout;
     private ViewPager viewPager;
-    private PagerSlidingTabStrip tabsStrip;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.messenger_slidetab);
+        setContentView(R.layout.class_layout);
 
-        viewPager = (ViewPager) findViewById(R.id.viewpager);
-        viewPager.setAdapter(new CustomPagerAdapter(getSupportFragmentManager()));
+        toolbar = (Toolbar) findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
 
-        // Give the PagerSlidingTabStrip the ViewPager
-        tabsStrip = (PagerSlidingTabStrip) findViewById(R.id.tabs);
-        // Attach the view pager to the tab strip
-        tabsStrip.setViewPager(viewPager);
-
-        Field field = null;
-        try {
-            field = PagerSlidingTabStrip.class.getDeclaredField("tabsContainer");
-            field.setAccessible(true);
-            LinearLayout tabsContainer = (LinearLayout) field.get(tabsStrip);
-            tabsContainer.getChildAt(0).setSelected(true);
-
-        } catch (NoSuchFieldException e) {
-            e.printStackTrace();
-        } catch (IllegalAccessException e) {
-            e.printStackTrace();
+        if (getSupportActionBar() != null) {
+            getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+            getSupportActionBar().setDisplayShowTitleEnabled(false);
         }
 
-
-        tabsStrip.setOnPageChangeListener(new ViewPager.OnPageChangeListener() {
-
-            private int currentPageSelected = 0;
-
-            @Override
-            public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
-
-            }
-
-            @Override
-            public void onPageSelected(int position) {
-
-                Field field = null;
-                try {
-                    field = PagerSlidingTabStrip.class.getDeclaredField("tabsContainer");
-                    field.setAccessible(true);
-
-                    LinearLayout tabsContainer = (LinearLayout) field.get(tabsStrip);
-                tabsContainer.getChildAt(currentPageSelected).setSelected(false);
-                currentPageSelected = position;
-                tabsContainer.getChildAt(position).setSelected(true);
-
-                } catch (NoSuchFieldException e) {
-                    e.printStackTrace();
-                } catch (IllegalAccessException e) {
-                    e.printStackTrace();
-                }
+        TextView titleTextView = (TextView) toolbar.findViewById(R.id.class_name);
 
 
-            }
+        viewPager = (ViewPager) findViewById(R.id.viewpager);
 
-            @Override
-            public void onPageScrollStateChanged(int state) {
+        String key = getIntent().getExtras().getString("groupKey");
 
-            }
-        });
+        String groupName = getIntent().getExtras().getString("groupName");
+        Log.d("AAAAA", groupName);
 
+        titleTextView.setText(groupName);
+        Utils.setTypefaceMedium(titleTextView,this);
 
+        setupViewPager(viewPager, key);
+
+        tabLayout = (TabLayout) findViewById(R.id.tabs);
+        tabLayout.setupWithViewPager(viewPager);
+
+        Utils.changeTabsFont(tabLayout, this);
     }
 
-    private void setupViewPager(ViewPager viewPager) {
+    public boolean onOptionsItemSelected(MenuItem item){
+        finish();
+        return true;
+    }
+
+    private void setupViewPager(ViewPager viewPager, String groupKey) {
         ViewPagerAdapter adapter = new ViewPagerAdapter(getSupportFragmentManager());
+        Bundle args = new Bundle();
+        args.putString("groupKey", groupKey);
+        TeacherChatFragment tf = new TeacherChatFragment();
+        GroupChatFragment gf = new GroupChatFragment();
+        tf.setArguments(args);
+        gf.setArguments(args);
+        adapter.addFragment(tf, "LEARN");
+        adapter.addFragment(gf, "CHAT");
         viewPager.setAdapter(adapter);
     }
 
@@ -120,10 +109,6 @@ public class MessengerSwipe extends AppCompatActivity {
         public CharSequence getPageTitle(int position) {
             return mFragmentTitleList.get(position);
         }
-    }
-
-    @Override
-    public void onBackPressed() {
     }
 
 }

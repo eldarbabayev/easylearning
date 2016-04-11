@@ -25,6 +25,7 @@ import android.widget.TextView;
 
 import com.firebase.client.Firebase;
 import com.firebase.client.FirebaseError;
+import com.firebase.client.ServerValue;
 import com.play.eldarbabayev2.easylearning.R;
 import com.play.eldarbabayev2.easylearning.common.GenericActivity;
 import com.play.eldarbabayev2.easylearning.common.Utils;
@@ -314,7 +315,7 @@ public class SignUp extends GenericActivity<SignUp,
                                     post.put("gender", genderInput.getText().toString());
                                     post.put("email", emailInput.getText().toString());
                                     post.put("country", countryInput.getText().toString());
-
+                                    post.put("timeWhenJoined", ServerValue.TIMESTAMP);
                                     postRef.child(Utils.escapeEmailAddress(emailInput.getText().toString())).setValue(post);
 
                                     SharedPreferences prefs = getApplication().getSharedPreferences("UserPrefs", 0);

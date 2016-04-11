@@ -13,10 +13,13 @@ import android.widget.LinearLayout.LayoutParams;
 
 import com.firebase.client.Query;
 import com.firebase.ui.FirebaseListAdapter;
+import com.github.curioustechizen.ago.RelativeTimeTextView;
 import com.play.eldarbabayev2.easylearning.R;
 import com.play.eldarbabayev2.easylearning.common.PresenterOps;
 import com.play.eldarbabayev2.easylearning.common.Utils;
 import com.play.eldarbabayev2.easylearning.models.Chat;
+
+import java.util.Date;
 
 public class MessengerListAdapter extends FirebaseListAdapter<Chat> {
 
@@ -38,12 +41,13 @@ public class MessengerListAdapter extends FirebaseListAdapter<Chat> {
         String username = prefs.getString("userFullname", null);
         Typeface typeFace = Typeface.createFromAsset(mActivity.getAssets(), "fonts/AvenirLTStd-Light.ttf");
         userNameTextBox.setText(author);
-        contentTextBox.setText(chat.getMessage());
+        contentTextBox.setText(chat.getContent());
         userNameTextBox.setTypeface(typeFace);
         contentTextBox.setTypeface(typeFace);
 
+
         if (username.equals(author)) {
-            userNameTextBox.setTextColor(view.getResources().getColor(R.color.blue));
+            userNameTextBox.setTextColor(view.getResources().getColor(R.color.pink));
         } else {
             userNameTextBox.setTextColor(view.getResources().getColor(R.color.pink));
 

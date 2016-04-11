@@ -2,7 +2,7 @@
 <resources>
 
     <color name="log_in_background">#212121</color>
-    <color name="pink">#E91E63</color>
+    <color name="pink">#247BA0</color>
     <color name="log_in_username">#424242</color>
     <color name="log_in_pass">#424242</color>
     <color name="log_in_pressed">#616161</color>
@@ -13,12 +13,13 @@
     <color name="text_help">#E0E0E0</color>
 
     <!-- Search classes colors-->
-    <color name="primary">#E91E63</color>
-    <color name="primary_dark">#C2185B</color>
+    <color name="primary">#247BA0</color>
+    <color name="primary_dark">#0070A0</color>
     <color name="main">#F5F5F5</color>
     <color name="text_separator">#E0E0E0</color>
     <color name="drawer">#9E9E9E</color>
-    <color name="accent">#448AFF</color>
+    <color name="accent">#5B8BA0</color>
+
 
 
 

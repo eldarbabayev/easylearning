@@ -10,7 +10,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        card_view:cardBackgroundColor="#424242"
+        card_view:cardBackgroundColor="@color/white"
         android:layout_marginTop = "5dp"
         android:layout_marginBottom = "5dp"
         android:layout_marginLeft = "6dp"
@@ -38,19 +38,12 @@
 
                 />
 
-            <TextView
-                android:layout_width="200dp"
-                android:layout_height="1dp"
-                android:background="#616161"
-                android:layout_marginLeft="20dp"
-
-                />
 
             <TextView
                 android:id="@+id/user_message_content"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textColor="#FFFFFF"
+                android:textColor="@color/black"
                 android:textSize="17sp"
                 android:gravity="center_vertical"
                 android:layout_marginTop="10dp"

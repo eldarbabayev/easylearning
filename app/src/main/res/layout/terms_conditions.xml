@@ -1,41 +1,32 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <FrameLayout
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/toolbar_terms"
+        android:minHeight="?attr/actionBarSize"
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1">
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="@dimen/toolbar_height"
+        app:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
+        app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
+        android:background="@color/primary"
+        android:gravity="center"
         >
 
-
-        <ImageButton
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:layout_marginTop="5dp"
-            android:layout_marginLeft="8dp"
-            android:layout_marginBottom="5dp"
-            android:background="@drawable/ic_action_name"
-            android:onClick="closeTerms"
-            />
-
         <TextView
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="5"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:text="TERMS AND CONDITIONS"
-            android:id="@+id/terms_heading"
-            android:gravity="center"
+            android:layout_gravity="center"
+            android:id="@+id/toolbar_title"
             android:textSize="20sp"
             android:textColor="@color/white"/>
 
-    </LinearLayout>
-</FrameLayout>
+
+    </android.support.v7.widget.Toolbar>
 
 
     <ScrollView android:id="@+id/textAreaScroller"

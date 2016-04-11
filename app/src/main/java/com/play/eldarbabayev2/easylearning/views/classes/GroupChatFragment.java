@@ -2,16 +2,14 @@ package com.play.eldarbabayev2.easylearning.views.classes;
 
 import android.app.Activity;
 import android.content.SharedPreferences;
-import android.graphics.Typeface;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.animation.Animation;
-import android.view.animation.AnimationUtils;
+import android.widget.Button;
 import android.widget.EditText;
-import android.widget.ImageButton;
 import android.widget.ListView;
 
 import com.firebase.client.Firebase;
@@ -30,6 +28,8 @@ public class GroupChatFragment extends Fragment implements View.OnClickListener 
     private ViewGroup hiddenPanel;
     private Animation bottomUp;
     private String mUsername;
+    private String groupKey;
+
 
     @Override
     public void onAttach(Activity act) {
@@ -51,25 +51,21 @@ public class GroupChatFragment extends Fragment implements View.OnClickListener 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        ref = new Firebase(Constants.FIREBASE_URL).child("chatGroupList");
 
         View view = inflater.inflate(R.layout.group_chat, container, false);
         EditText message = (EditText) view.findViewById(R.id.send_message);
-        ImageButton button = (ImageButton) view.findViewById(R.id.send_message_button);
+        Button button = (Button) view.findViewById(R.id.send_message_button);
         Utils.setTypefaceLight(message, getActivity());
+        Utils.setTypefaceMedium(button, getActivity());
+        Bundle args = getArguments();
+        groupKey = args.getString("groupKey");
 
+        ref = new Firebase(Constants.FIREBASE_URL).child("userMessages").child(groupKey);
 
         ListView classMessages = (ListView) view.findViewById(R.id.group_chat_list);
-        classMessagesAdapter = new MessengerListAdapter(mActivity, Chat.class, R.layout.messenger_item, ref);
+        classMessagesAdapter = new MessengerListAdapter(mActivity, Chat.class, R.layout.group_messages_item, ref);
 
         classMessages.setAdapter(classMessagesAdapter);
-
-        // input text animation
-       // bottomUp = AnimationUtils.loadAnimation(getActivity(),
-         //       R.anim.bottom_up);
-
-       // bottomDown = AnimationUtils.loadAnimation(getActivity(),
-           //     R.anim.bottom_down);
 
         hiddenPanel = (ViewGroup) view.findViewById(R.id.editable);
 
@@ -83,37 +79,12 @@ public class GroupChatFragment extends Fragment implements View.OnClickListener 
 
         setupUsername();
 
-
-
         return view;
     }
 
     @Override
     public void onClick(View v) {
     }
-
-
-    @Override
-    public void onResume() {
-        super.onResume();
- //       if (!getUserVisibleHint())
-   //     {
-     //       hiddenPanel.setVisibility(View.INVISIBLE);
-      //  } else {
-       //     hiddenPanel.startAnimation(bottomUp);
-        //    hiddenPanel.setVisibility(View.VISIBLE);
-        //}
-    }
-
- //   @Override
- //   public void setUserVisibleHint(boolean isVisibleToUser) {
- //       super.setUserVisibleHint(isVisibleToUser);
- //    //   if (isVisibleToUser && isResumed()) {
-  ///          onResume();
-   //     } else if (!isVisibleToUser && isResumed()) {
-    //        onResume();
-     //   }
-    //}
 
     @Override
     public void onDestroy() {

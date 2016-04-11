@@ -36,9 +36,9 @@ public class ActiveListAdapter extends FirebaseListAdapter<Group> {
         TextView descrtext = (TextView) view.findViewById(R.id.group_description_item);
         TextView teachertext = (TextView) view.findViewById(R.id.group_teacher_item);
 
-        nametext.setText(group.getGroupName());
-        descrtext.setText(group.getGroupDescription());
-        teachertext.setText(group.getGroupTeacher());
+        nametext.setText(group.getName());
+        descrtext.setText(group.getDescription());
+        teachertext.setText(group.getTeacher());
 
         nametext.setTypeface(typeFace_bold);
         descrtext.setTypeface(typeFace);

@@ -38,12 +38,14 @@
         <activity
             android:name=".views.authentication.TermsCondition"
             android:label="@string/app_name"
-            android:screenOrientation="portrait">
+            android:screenOrientation="portrait"
+            android:theme="@style/MessengerTheme">
         </activity>
         <activity
             android:name=".views.classes.MessengerSwipe"
             android:label="@string/app_name"
-            android:screenOrientation="portrait">
+            android:screenOrientation="portrait"
+            android:theme="@style/MessengerTheme">
         </activity>
 
     </application>

@@ -1,10 +1,8 @@
 <ListView
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:layout_marginTop="@dimen/toolbar_height"
     android:id="@+id/group_list"
-    android:layout_marginLeft="@dimen/group_side_margin"
-    android:layout_marginRight="@dimen/group_side_margin"
+    android:layout_marginTop="@dimen/toolbar_height"
     android:layout_alignParentTop="true"
     android:layout_alignParentLeft="true"
     android:layout_alignParentRight="true"

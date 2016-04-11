@@ -2,44 +2,55 @@ package com.play.eldarbabayev2.easylearning.models;
 
 public class Group {
 
-    private String groupName;
-    private String groupTeacher;
-    private String groupDescription;
-    private int groupSize;
+    private String name;
+    private String teacher;
+    private String description;
+    private long size;
+    private long timeOfCreation;
+    private String groupId;
 
     public Group() {
     }
 
-    public Group(String groupName, String groupTeacher, String groupDescription) {
-        this.groupName = groupName;
-        this.groupTeacher = groupTeacher;
-        this.groupDescription = groupDescription;
+    public Group(String name, String teacher, String description, int size, long timeOfCreation) {
+        this.name = name;
+        this.teacher = teacher;
+        this.description = description;
+        this.size = size;
+        this.timeOfCreation = timeOfCreation;
     }
 
-    public Group(String groupName, String groupTeacher, String groupDescription, int groupSize) {
-        this.groupName = groupName;
-        this.groupTeacher = groupTeacher;
-        this.groupDescription = groupDescription;
+    public Group(String name, String teacher, String description, String groupId) {
+        this.name = name;
+        this.teacher = teacher;
+        this.description = description;
+        this.groupId = groupId;
     }
 
 
-    public String getGroupName() {
-        return groupName;
+    public String getName() {
+        return name;
     }
 
-    public String getGroupTeacher() {
-        return groupTeacher;
+    public String getTeacher() {
+        return teacher;
     }
 
-    public String getGroupDescription() {
-        return groupDescription;
+    public String getDescription() {
+        return description;
     }
 
-    public int getGroupSize() {
-        return groupSize;
+    public long getTimeOfCreation() {
+        return timeOfCreation;
     }
 
-    public void setGroupSize(int groupSize) {
-        this.groupSize = groupSize;
+    public String getGroupId() { return groupId; }
+
+    public long getSize() {
+        return size;
+    }
+
+    public void setSize(int size) {
+        this.size = size;
     }
 }

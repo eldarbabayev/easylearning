@@ -13,8 +13,9 @@
         android:layout_alignParentLeft="true"
         android:layout_alignParentRight="true"
         android:layout_above="@+id/editable"
-        android:divider="?android:colorBackground"
+        android:divider="@color/white"
         android:listSelector="@android:color/transparent"
+
 
         />
     <!-- android:background="@color/log_in_pass" -->
@@ -24,7 +25,7 @@
     <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="61dp"
-        android:background="?android:colorBackground"
+        android:background="@color/white"
         android:layout_alignParentBottom="true"
         android:layout_alignParentLeft="true"
         android:layout_alignParentRight="true"
@@ -34,39 +35,76 @@
             android:layout_width="match_parent"
             android:layout_height="1dp"
             android:text=""
-            android:background="@color/log_in_pressed"
+            android:background="@color/drawer"
             android:id="@+id/boundary"
 
             />
 
+
+
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:layout_marginRight="30dp"
+        android:layout_marginLeft="30dp"
+        android:layout_marginTop="9dp"
+        android:layout_marginBottom="9dp"
         android:id="@+id/inner"
         android:orientation="horizontal"
+        android:background="@color/white"
         >
 
-        <EditText
+        <FrameLayout
             android:layout_width="0dp"
             android:layout_height="match_parent"
-            android:layout_weight="5"
+            android:layout_weight="10"
+            android:background="@color/white">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/pink"
+            />
+
+        <EditText
+            android:layout_height="match_parent"
+            android:layout_width="match_parent"
             android:id="@+id/send_message"
             android:inputType="textMultiLine"
             android:ems="10"
-            android:padding="20dp"
             android:layout_gravity="center_horizontal"
             android:textCursorDrawable="@null"
-            android:background="@android:color/transparent"
+            android:background="@color/white"
             android:textColorHint="@color/log_in_pressed"
             android:hint="type a message"
+            android:paddingLeft="5dp"
+            android:layout_marginRight="1dp"
+            android:layout_marginLeft="1dp"
+            android:layout_marginBottom="1dp"
+            android:layout_marginTop="1dp"
+            android:paddingRight="5dp"
+
             />
 
-        <ImageButton
+        </FrameLayout>
+
+        <TextView
             android:layout_width="0dp"
             android:layout_height="match_parent"
-            android:layout_weight="1"
+            android:layout_weight="1"/>
+
+        <Button
             android:id="@+id/send_message_button"
-            android:background="@drawable/ic_send_normal"
+            android:layout_width="0dp"
+            android:layout_weight="3"
+            android:layout_height="match_parent"
+            android:background="@color/pink"
+            android:text="@string/send"
+            android:textColor="@color/white"
+            android:textSize="15sp"
+            style = "?android:attr/buttonBarButtonStyle"
+            android:layout_gravity="center_horizontal|center_vertical"
             />
 
     </LinearLayout>
