@@ -257,7 +257,7 @@ public class SearchClassesActivity extends GenericActivity<SearchClassesActivity
                                                     if (snapshot.getValue() == null) {
                                                         Log.d(TAG, "I am Here2");
 
-                                                        refSize.setValue(currentSize + 1);
+                                                        refSize.child("size").setValue(currentSize + 1);
 
                                                         // add a new group to user group list and go to class
                                                         ref.setValue(ServerValue.TIMESTAMP);
