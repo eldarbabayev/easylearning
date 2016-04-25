@@ -14,8 +14,8 @@
         android:layout_above="@+id/editable"
         android:divider="@color/white"
         android:listSelector="@android:color/transparent"
-
-
+        android:stackFromBottom="true"
+        android:transcriptMode="alwaysScroll"
         />
     <!-- android:background="@color/log_in_pass" -->
 

@@ -11,6 +11,9 @@
         android:id="@+id/teacher_messages"
         android:divider="?android:colorBackground"
         android:listSelector="@android:color/transparent"
+        android:stackFromBottom="true"
+        android:transcriptMode="alwaysScroll"
+
         >
 
     </ListView>
