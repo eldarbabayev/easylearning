@@ -33,7 +33,6 @@
 
     <!-- Fragment options -->
     <string-array name="options_array">
-        <item>My Courses</item>
         <item>Find Courses</item>
     </string-array>
 

@@ -1,15 +1,25 @@
 package com.play.eldarbabayev2.easylearning.common;
 
 import android.app.Activity;
+import android.app.NotificationManager;
+import android.app.PendingIntent;
+import android.app.TaskStackBuilder;
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
+import android.graphics.Bitmap;
 import android.graphics.Point;
 import android.graphics.Typeface;
+import android.graphics.drawable.BitmapDrawable;
+import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.os.Build;
 import android.os.IBinder;
+import android.provider.ContactsContract;
 import android.support.design.widget.TabLayout;
+import android.support.v7.app.NotificationCompat;
 import android.util.DisplayMetrics;
+import android.util.Log;
 import android.view.Display;
 import android.view.View;
 import android.view.ViewGroup;
@@ -19,6 +29,17 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import com.firebase.client.ChildEventListener;
+import com.firebase.client.DataSnapshot;
+import com.firebase.client.Firebase;
+import com.firebase.client.FirebaseError;
+import com.firebase.client.ValueEventListener;
+import com.play.eldarbabayev2.easylearning.R;
+import com.play.eldarbabayev2.easylearning.models.Chat;
+import com.play.eldarbabayev2.easylearning.utils.Constants;
+import com.play.eldarbabayev2.easylearning.views.classes.MessengerSwipe;
+import com.play.eldarbabayev2.easylearning.views.classes.TeacherChatFragment;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -213,6 +234,113 @@ public class Utils {
     }
 
 
+    // Need to work on this in the future
+    public static void setUpTeacherNotifications(final Activity activity) {
+        SharedPreferences prefs = activity.getSharedPreferences("UserPrefs", 0);
+        String email = prefs.getString("userEmail", null);
+
+        Firebase ref = new Firebase(Constants.FIREBASE_URL).child("users").child(escapeEmailAddress(email)).child("groups");
+
+        ref.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                for (DataSnapshot ds: dataSnapshot.getChildren()) {
+                    final String groupKey = ds.getKey();
+
+                    Firebase keyRef = new Firebase(Constants.FIREBASE_URL).child("groups").child(groupKey);
+
+
+                    keyRef.addListenerForSingleValueEvent(new ValueEventListener() {
+
+                        @Override
+
+                        public void onDataChange(DataSnapshot snapshot) {
+                            final String groupName = (String) snapshot.child("name").getValue();
+
+                            Firebase newRef = new Firebase(Constants.FIREBASE_URL).child("teacherMessages").child(groupKey);
+
+                            newRef.addChildEventListener(new ChildEventListener() {
+                                @Override
+                                public void onChildAdded(DataSnapshot dataSnapshot, String s) {
+                                    Chat newChat = dataSnapshot.getValue(Chat.class);
+
+                                    NotificationCompat.Builder mBuilder = new NotificationCompat.Builder(activity);
+
+
+                                    Intent resultIntent = new Intent(activity, MessengerSwipe.class);
+
+                                    resultIntent.putExtra("groupKey", groupKey);
+                                    resultIntent.putExtra("groupName", groupName);
+
+                                    PendingIntent mContentIntent = PendingIntent.getActivity(activity, 0,
+                                            resultIntent, Intent.FLAG_ACTIVITY_NEW_TASK);
+
+                                    Drawable dr;
+
+                                    dr = activity.getResources().getDrawable(R.mipmap.ic_launcher);
+
+
+                                    Bitmap bitmap = ((BitmapDrawable) dr).getBitmap();
+
+
+                                    mBuilder.setLargeIcon(bitmap);
+                                    mBuilder.setSmallIcon(R.drawable.ic_notification);
+                                    mBuilder.setContentTitle("New post");
+                                    mBuilder.setContentText(newChat.getAuthor() + " added new post");
+                                    mBuilder.setContentIntent(mContentIntent);
+
+                                    NotificationManager mNotificationManager = (NotificationManager) activity.getSystemService(Context.NOTIFICATION_SERVICE);
+
+                                    // notificationID allows you to update the notification later on.
+                                    mNotificationManager.notify(1, mBuilder.getNotification());
+
+
+                                }
+
+                                @Override
+                                public void onChildChanged(DataSnapshot dataSnapshot, String s) {
+
+                                }
+
+                                @Override
+                                public void onChildRemoved(DataSnapshot dataSnapshot) {
+
+                                }
+
+                                @Override
+                                public void onChildMoved(DataSnapshot dataSnapshot, String s) {
+
+                                }
+
+                                @Override
+                                public void onCancelled(FirebaseError firebaseError) {
+
+                                }
+                            });
+
+
+                        }
+
+                        @Override
+                        public void onCancelled(FirebaseError firebaseError) {
+
+                        }
+                    });
+
+                }
+            }
+
+            @Override
+            public void onCancelled(FirebaseError firebaseError) {
+
+            }
+        });
+
+    }
+
+    public static void setUpGroupNotifications(Activity activity) {
+
+    }
 
 
 }

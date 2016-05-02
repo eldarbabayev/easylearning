@@ -109,7 +109,7 @@ public class SearchClassesActivity extends GenericActivity<SearchClassesActivity
 
         List<String> list = new ArrayList<>();
         list.add(mOptionsList[0]);
-        list.add(mOptionsList[1]);
+//        list.add(mOptionsList[1]);
         // set up the drawer's list view with items and click listener
         mDrawerList.setAdapter(new OptionsAdapter(this, list, R.layout.drawer_list_item));
 
@@ -149,7 +149,6 @@ public class SearchClassesActivity extends GenericActivity<SearchClassesActivity
                 getSupportActionBar().setTitle(mOptionsList[0]);
             }
         }
-
 
         super.onCreate(GroupListController.class,
                 this);
@@ -241,9 +240,6 @@ public class SearchClassesActivity extends GenericActivity<SearchClassesActivity
                                         final long currentSize = (long) snapshot.child("size").getValue();
                                         final String groupName = (String) snapshot.child("name").getValue();
 
-                                        Log.d(TAG, "groupName " + groupName);
-                                        if (currentSize < 5) {
-
                                             SharedPreferences prefs = getActivity().getSharedPreferences("UserPrefs", 0);
                                             String email = prefs.getString("userEmail", null);
 
@@ -288,9 +284,6 @@ public class SearchClassesActivity extends GenericActivity<SearchClassesActivity
                                                 }
                                             });
 
-                                        } else {
-                                            // do nothing, don't allow user
-                                        }
                                     }
 
                                     @Override
@@ -302,7 +295,9 @@ public class SearchClassesActivity extends GenericActivity<SearchClassesActivity
                             }
                         });
 
-            } else if (option.equals("My Courses")) {
+            }
+
+            /*else if (option.equals("My Courses")) {
 
                 // get current user's group list
                 SharedPreferences prefs = getActivity().getSharedPreferences("UserPrefs", 0);
@@ -373,7 +368,7 @@ public class SearchClassesActivity extends GenericActivity<SearchClassesActivity
                     }
                 });
 
-            }
+            }*/
 
 
             return rootView;

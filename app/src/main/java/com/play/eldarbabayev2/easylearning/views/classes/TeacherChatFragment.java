@@ -3,19 +3,20 @@ package com.play.eldarbabayev2.easylearning.views.classes;
 import android.app.Activity;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v7.app.NotificationCompat;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ListView;
 
+import com.firebase.client.ChildEventListener;
+import com.firebase.client.DataSnapshot;
 import com.firebase.client.Firebase;
-import com.github.curioustechizen.ago.RelativeTimeTextView;
+import com.firebase.client.FirebaseError;
 import com.play.eldarbabayev2.easylearning.R;
 import com.play.eldarbabayev2.easylearning.models.Chat;
 import com.play.eldarbabayev2.easylearning.utils.Constants;
 import com.play.eldarbabayev2.easylearning.views.classes.adapters.MessengerListAdapter;
-
-import java.util.Date;
 
 public class TeacherChatFragment extends Fragment implements View.OnClickListener {
 
@@ -59,6 +60,9 @@ public class TeacherChatFragment extends Fragment implements View.OnClickListene
         adapter = new MessengerListAdapter(mActivity, Chat.class, R.layout.teacher_message_items, ref);
 
         teacherMessenger.setAdapter(adapter);
+
+
+
 
         return view;
     }

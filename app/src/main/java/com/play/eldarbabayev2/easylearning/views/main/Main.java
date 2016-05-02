@@ -60,10 +60,10 @@ public class Main extends GenericActivity<SignUp,
         Drawable dr;
 
         if (displayParameters.get(0) / displayParameters.get(1) > 1.62) {
-            dr = getResources().getDrawable(R.drawable.image_small);
+            dr = getResources().getDrawable(R.drawable.small);
         }
         else {
-            dr = getResources().getDrawable(R.drawable.image_large);
+            dr = getResources().getDrawable(R.drawable.large);
         }
 
         if (dr != null) {

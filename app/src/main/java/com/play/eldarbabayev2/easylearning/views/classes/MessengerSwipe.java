@@ -54,7 +54,7 @@ public class MessengerSwipe extends AppCompatActivity {
         Log.d("AAAAA", groupName);
 
         titleTextView.setText(groupName);
-        Utils.setTypefaceMedium(titleTextView,this);
+        Utils.setTypefaceMedium(titleTextView, this);
 
         setupViewPager(viewPager, key);
 
@@ -62,6 +62,7 @@ public class MessengerSwipe extends AppCompatActivity {
         tabLayout.setupWithViewPager(viewPager);
 
         Utils.changeTabsFont(tabLayout, this);
+
     }
 
     public boolean onOptionsItemSelected(MenuItem item){

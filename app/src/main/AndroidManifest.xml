@@ -48,6 +48,7 @@
             android:theme="@style/MessengerTheme">
         </activity>
 
+
     </application>
 
 </manifest>
